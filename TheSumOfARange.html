@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>The sum of a range - Level: Easy</h1>
+    
+<button onclick="sumOfRange()">Enter The num</button>
+    
+<script type = "text/javascript">
+
+    class customRange{
+        range(){
+            var function1 = function (start, end){
+                var arr_numbers = new Array();
+                if(start > end){
+                    while(start >= end){
+                        arr_numbers.push(start)
+                        start--;
+                    }
+                }
+                else{
+                    while(start <= end){
+                        arr_numbers.push(start)
+                        start++;
+                    }
+                }
+                return arr_numbers;
+            }
+
+            var function2 = function (start, end, step){
+                var arr_numbers = new Array();
+//                if(step === 0){
+//                    step = 1;
+//                }
+                if(step < 0){
+                    while(start >= end){
+                        arr_numbers.push(start)
+                        start -= step;
+                    }
+                }
+                else{
+                    while(start <= end){
+                        arr_numbers.push(start)
+                        start += step;
+                    }
+                }
+                return arr_numbers;
+            }
+
+            if(arguments.length === 2){
+                return function1(arguments[0], arguments[1]);
+            } 
+            else if(arguments.length === 3){
+                return function2(arguments[0], arguments[1], arguments[2]);
+            }
+        }
+    }
+        
+	function sum(numbers){
+        return numbers.reduce(add);
+	}
+    
+    function add(total, number){
+        return total + number;
+    }
+    
+    function sumOfRange(){
+        var string_numbers = prompt("Please enter the numbers", "");
+        var numbers = string_numbers.split(" ").map(x => parseInt(x));
+        //console.log(numbers.length);
+    
+        var range = new customRange().range;
+        if(numbers.length === 2){
+            console.log(range(numbers[0], numbers[1]));
+            console.log(sum(range(numbers[0], numbers[1])));
+        }
+        else if(numbers.length === 3){
+            console.log(range(numbers[0], numbers[1], numbers[2]));
+            console.log(sum(range(numbers[0], numbers[1], numbers[2])));
+        }
+    }
+
+</script>
+
+</body>
+</html>
