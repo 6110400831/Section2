@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>Chess board - Level: Easy</h1>
+    
+<button onclick="chessBoard()">Enter The number</button>
+    
+<script type = "text/javascript">
+    function chessBoard(){
+        var string_number = prompt("Please enter the numbers", "");
+        var number = parseInt(string_number);
+        //console.log(number);
+        var x = 0;
+        var y = 0;
+        var board = "";
+        var check = 0;
+        while(x < number){
+            board = "";
+            y = 0;
+            if(x % 2 === 0){
+                check = 0;
+            }
+            else{
+                check = 1;
+            }
+            while(y < number){
+                if((y+check) % 2 === 0){
+                    board += "#";
+                }
+                else{
+                    board += " ";
+                }
+                y++;
+            }
+            console.log(board);
+            x++;
+        }
+    }
+</script>
+
+</body>
+</html>
